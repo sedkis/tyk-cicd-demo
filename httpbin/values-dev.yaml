@@ -12,6 +12,9 @@ image:
 
 api:
   listenPath: /httpbin
+  operatorContext:
+    name: tyk-operator-ctx-dev
+    namespace: tyk-operator-system
 
 imagePullSecrets: []
 nameOverride: ""

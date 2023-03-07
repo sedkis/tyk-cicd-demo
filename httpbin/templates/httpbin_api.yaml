@@ -4,8 +4,8 @@ metadata:
   name: tyk-cicd-demo-{{ include "httpbin.fullname" . }}
 spec:
   contextRef:
-    name: tyk-operator-ctx-dev
-    namespace: tyk-operator-system
+    name: {{ .Values.api.operatorContext.name }}
+    namespace: {{ .Values.api.operatorContext.namespace }}
   name: tyk-cicd-demo-{{ include "httpbin.fullname" . }}
   use_keyless: true
   protocol: http
