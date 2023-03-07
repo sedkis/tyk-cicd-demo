@@ -1,0 +1,9 @@
+apiVersion: tyk.tyk.io/v1alpha1
+kind: TykOASApiDefinition
+metadata:
+  name: tyk-cicd-demo-{{ include "petstore.fullname" . }}-v3
+spec:
+  oas_ref:
+    name: tyk-cicd-demo-{{ include "petstore.fullname" . }}-v3
+    namespace: petstore-app
+    key_name: petstore-oas3.json

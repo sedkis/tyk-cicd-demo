@@ -28,5 +28,4 @@ spec:
       destination:
         server: '{{url}}'
         namespace: httpbin-app-{{env}}
-      syncPolicy:
-        automated: {}
+      syncPolicy: {}
