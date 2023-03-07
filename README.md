@@ -2,23 +2,16 @@
 
 This is a playground for demostrating how to control deployment of APIs in CI/CD use Tyk Operator or Tyk Sync.
 
-## Example 1 - Tyk Operator
+## Example 1 - Deploying your application and API configurations using Helm and ArgoCD
+In this example, you'll use Helm to package your applications with API configurations. The Helm Chart and manifests are committed to Git. ArgoCD will automatically re-deploy (sync) your Helm Chart.
+
 1. Environment setup
 
-First, setup your Tyk environments for testing. In this demo, we assume 3 environments (dev, staging, prod).
+First, setup your Tyk environments for testing. In this demo, we assume 3 environments (dev, staging, prod). Then, setup some local Kubernetes clusters where you can deploy ArgoCD, Tyk Operator, and the applications.
 
-Connects to the sample Tyk Cloud setup consisting of two environments and 3 control planes:
+![Tyk Operator Environment Setup](./images/tyk-operator-setup.png)
 
-```
-Staging environment
-- dev_control_plane + 1 edge
-- control_plane + 1 edge
-
-Production environment
-- control_plane + 3 edges
-```
-
-Spin up to local clusters:
+Spin up two local clusters:
 ```
 minikube start -p staging
 minikube start -p production
