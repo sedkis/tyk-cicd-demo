@@ -9,7 +9,7 @@ kubectl create ns tyk$TYK_ENV
 ```
 
 2. Create .env file
-e.g. For dev environment, create `.env.dev` from `[.env](./env)`
+e.g. For dev environment, create `.env.dev` from [`.env`](./env)
 
 3. Install Redis
 ```
