@@ -2,7 +2,7 @@
 
 This is a helm chart that deploys targeted application and a Tyk API.
 
-1. In `image` section, configure the application image tag.
+1. In `image` section, configure the application image tag. Alternatively, modify `appVersion` in `Charts.yaml`
 ```
 image:
   repository: docker.io/kong/httpbin
