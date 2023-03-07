@@ -21,7 +21,13 @@ api:
 
 ```
 
-3. To test
+3. To install manually using Helm
+```
+kubectl create ns httpbin-app
+helm install httpbin . -n httpbin-app -f values-dev.yaml
+```
+
+4. To test the API
 ```
 curl {GATEWAY_URL}/httpbin/get
 ```
