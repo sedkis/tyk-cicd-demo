@@ -3,8 +3,8 @@
 This is a playground for demostrating how to control deployment of APIs in CI/CD use Tyk Operator or Tyk Sync.
 
 ## Example 1 - Tyk Operator
-### Pre-requisite
 1. Environment setup
+
 First, setup your Tyk environments for testing. In this demo, we assume 3 environments (dev, staging, prod).
 
 Connects to the sample Tyk Cloud setup consisting of two environments and 3 control planes:
@@ -31,7 +31,7 @@ kubectx production
 ```
 
 2. Install Tyk Operator
-Follow `[operator-configs](./operator-configs/)` to install Tyk Operator and configure OperatorContext to connect to different Tyk environments.
+Follow [`operator-configs`](./operator-configs/) to install Tyk Operator and configure OperatorContext to connect to different Tyk environments.
 
 3. Install ArgoCD
 Some of the examples make use of ArgoCD applications for CD.
