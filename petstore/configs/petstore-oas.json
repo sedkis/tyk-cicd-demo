@@ -170,9 +170,6 @@
    },
    "servers": [
      {
-       "url": "http://petstore.petstore-app.svc:80/"
-     },
-     {
        "url": "http://localhost:8181/"
      },
      {
@@ -184,29 +181,16 @@
    ],
    "x-tyk-api-gateway": {
      "info": {
-       "id": "b9289f579ece453a61a1180b05dadfdd",
-       "dbId": "6407080df44c4c00012c3947",
+       "id": "4fa24d7915934c7b65f3d7cd2132fc50",
+       "dbId": "6408622bf44c4c00012c394e",
        "orgId": "63fc93ba89f8b500016c7ab9",
-       "name": "OAS Petstore v2",
+       "name": "OAS Petstore",
        "state": {
          "active": true
-       },
-       "versioning": {
-         "enabled": true,
-         "name": "v2",
-         "default": "v2",
-         "location": "header",
-         "key": "x-api-version",
-         "versions": [
-           {
-             "name": "v3",
-             "id": "306aee8b44a54e4c487effd49cb4b981"
-           }
-         ]
        }
      },
      "upstream": {
-       "url": "https://petstore.swagger.io/v2"
+       "url": "http://localhost:8181/"
      },
      "server": {
        "listenPath": {

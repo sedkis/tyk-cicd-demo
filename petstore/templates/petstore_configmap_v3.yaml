@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: tyk-cicd-demo-{{ include "petstore.fullname" . }}-v3
-data:
-  {{- (.Files.Glob "configs/petstore-oas3.json").AsConfig | nindent 2 }}
