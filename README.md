@@ -35,12 +35,14 @@ Follow [`operator-configs`](./operator-configs/) to install Tyk Operator and con
 
 4. Example HTTP API - See [httpbin](./httpbin/)
 
+<!--
 5. Example OAS HTTP API - See [petstore](./petstore/)
+-->
 
-6. To enable GitOps management of your application and APIs, create some ArgoCD Applications, e.g.:
+5. To enable GitOps management of your application and APIs, create some ArgoCD Applications, e.g.:
 
 ```
 kubectl apply -f argocd/httpbin-applicationset.yaml
 ```
 
-This will automatically deploy applications to multiple environments during ArgoCD synchronization.d
+This will automatically deploy applications to multiple environments during ArgoCD synchronization.
