@@ -8,9 +8,9 @@
    * [staging](./staging/.env.staging)
    * [production](./production/.env.production)
 ```
-TYK_ORG=
-TYK_AUTH=
-TYK_URL=
+TYK_ORG=${Operator user's Organization ID}
+TYK_AUTH=${Operator user's API Key}
+TYK_URL=${Management URL of your Tyk Dashboard}
 ```
 
 ### Install Operator and Configure OperatorContext
@@ -39,15 +39,21 @@ kubectl create namespace tyk-operator-system
 First, go to the folder for target environment
 ```
 cd dev
+
 echo 'Inspect resources to be created'
 kubectl apply -n tyk-operator-system --dry-run=client -o yaml -k ./ 
+
 echo 'Create required secret and operator context for the target environment'
 kubectl apply -n tyk-operator-system -k ./
+
 secret/tyk-operator-conf-dev-6t8cf7bkb7 created
 operatorcontext.tyk.tyk.io/tyk-operator-ctx-dev created
 ```
 
 6. Install Operator
+
+By default, Tyk Operator looks for a secret named "tyk-operator-conf". So you need to update the secretRef to one of the tyk-operator-conf created as default, e.g.
+
 ```
 helm install tyk-operator tyk-helm/tyk-operator -n tyk-operator-system --set-json 'envFrom=[{"secretRef":{"name":"tyk-operator-conf-dev-6t8cf7bkb7"}}]'
 ```
