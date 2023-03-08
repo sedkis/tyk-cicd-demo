@@ -31,7 +31,7 @@ Follow [`operator-configs`](./operator-configs/) to install Tyk Operator and con
 
 3. Install ArgoCD
 
-[Install ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+[Install ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/) on your cluster.
 
 4. Example HTTP API - See [httpbin](./httpbin/)
 
