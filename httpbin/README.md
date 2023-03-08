@@ -27,7 +27,11 @@ kubectl create ns httpbin-app
 helm install httpbin . -n httpbin-app -f values-dev.yaml
 ```
 
-4. To test the API
+4. Update the application on Dev / Staging / Production environment
+
+The helm chart configurations can control the appVersion to be deployed. The API manifests could also be templated for different environments easily.
+
+5. To test the API
 ```
 curl {GATEWAY_URL}/httpbin/get
 ```
