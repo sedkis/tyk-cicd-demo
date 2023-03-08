@@ -9,7 +9,7 @@ In this example, you'll use Helm to package your applications with API configura
 
 First, setup your Tyk environments for testing. In this demo, we assume 3 environments (dev, staging, prod). Then, setup some local Kubernetes clusters where you can deploy ArgoCD, Tyk Operator, and the applications.
 
-![Tyk Operator Environment Setup](./images/tyk-operator-setup.png)
+![Tyk Operator Environment Setup](./images/tyk-operator-setup.jpg)
 
 Spin up two local clusters:
 ```
