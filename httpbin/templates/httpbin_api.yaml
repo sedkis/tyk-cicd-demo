@@ -4,7 +4,7 @@ metadata:
   name: tyk-cicd-demo-{{ include "httpbin.fullname" . }}
   namespace: apps
 spec:
-  name: {{ include "httpbin.fullname" . }}
+  name: {{ include "httpbin.fullname" . }} API
   use_keyless: true
   protocol: https
   active: true
