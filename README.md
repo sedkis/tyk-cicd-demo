@@ -11,8 +11,6 @@ First, setup your Tyk environments for testing. In this demo, we assume 2 enviro
 
 Then, setup some local Kubernetes clusters where you can deploy ArgoCD, Tyk Operator, and the applications.
 
-![Tyk Operator Environment Setup](./images/tyk-operator-setup.jpg)
-
 For testing, spin up two local clusters:
 ```
 minikube start -p staging
@@ -29,16 +27,14 @@ kubectx production
 
 [Install ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/) on your cluster.
 
-4. Example HTTP API - See [httpbin](./httpbin/)
+4. Deploy our infrastructure (ArgoCD, Tyk, base APIs)
 
-<!--
-5. Example OAS HTTP API - See [petstore](./petstore/)
--->
+...
+kubectl apply -f ./argocd
+...
 
-5. To enable GitOps management of your application and APIs, create some ArgoCD Applications, e.g.:
+5. Deploy HTTPBIN
 
 ```
-kubectl apply -f argocd/httpbin-applicationset.yaml
+kubectl apply -f ./httpbin/argo.yaml
 ```
-
-This will automatically deploy applications to multiple environments during ArgoCD synchronization.

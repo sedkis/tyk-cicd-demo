@@ -10,6 +10,7 @@ items:
     domain: argocd.dev.tyk-demo.com
     name: ArgoCD Server
     protocol: https
+    do_not_track: true
     proxy:
       listen_path: /
       strip_listen_path: true
@@ -44,6 +45,7 @@ items:
     domain: dashboard.dev.tyk-demo.com
     name: Tyk Dashboard
     protocol: https
+    do_not_track: true
     proxy:
       listen_path: /
       strip_listen_path: true
