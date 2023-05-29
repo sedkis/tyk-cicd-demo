@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "faf7bdc0-2b7a-4496-bc2f-0e2febaec8e3",
+		"name": "Starter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3785224"
+	},
+	"item": [
+		{
+			"name": "Firebase - Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"hello@world.com\",\n  \"password\": \"123123123\",\n  \"returnSecureToken\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={{firebase-token}}",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"identitytoolkit",
+						"v3",
+						"relyingparty",
+						"verifyPassword"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{firebase-token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{IDTOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sedky Abou-Shamalah\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIHOST}}/users",
+					"host": [
+						"{{APIHOST}}"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{IDTOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{APIHOST}}/users",
+					"host": [
+						"{{APIHOST}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
