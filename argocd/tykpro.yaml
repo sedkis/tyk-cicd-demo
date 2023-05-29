@@ -12,6 +12,8 @@ spec:
       parameters:
         - name: 'dash.image.tag'
           value: 'v5.0.2-rc7'
+        - name: 'gateway.image.tag'
+          value: 'v5.0.2-rc7'
         - name: mongo.useSSL
           value: 'true'
         - name: redis.addrs
