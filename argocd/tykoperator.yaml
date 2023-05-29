@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tyk-operator
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://helm.tyk.io/public/helm/charts/'
+    targetRevision: 0.13.0
+    chart: tyk-operator
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: tyk-operator-system
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: tyk-operator-system
+  name: tyk-operator-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tyk-operator-conf
+  namespace: tyk-operator-system
+data:
+  TYK_AUTH: "NTU2Y2Y1YjZmMTlhNDUyYjdhMTk1NGZmMTNiMmMzMzE="
+  TYK_MODE: "cHJv"
+  TYK_ORG: "NjQwNzZkYjRiODQ1YTcwMDAxMjg4M2Jl"
+  TYK_TLS_INSECURE_SKIP_VERIFY: dHJ1ZQ==
+  TYK_URL: "aHR0cDovL2Rhc2hib2FyZC1zdmMtdHlrLXByby50eWsuc3ZjLmNsdXN0ZXIubG9jYWw6MzAwMA=="

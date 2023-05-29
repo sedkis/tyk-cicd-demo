@@ -5,16 +5,14 @@
 replicaCount: 1
 
 image:
-  repository: docker.io/kong/httpbin
+  repository: docker.io/sedkis/httpbin
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
 api:
-  listenPath: /httpbin
-  operatorContext:
-    name: tyk-operator-ctx-prod
-    namespace: tyk-operator-system
+  listenPath: /
+  domain: httpbin.prod.tyk-demo.com
 
 imagePullSecrets: []
 nameOverride: ""

@@ -11,20 +11,16 @@ image:
   tag: ""
 ```
 
-2. In `api` section, configure listenPath of the Tyk API and also operator context to use.
+2. In `api` section, configure listenPath of the Tyk API
 ```
 api:
   listenPath: /httpbin
-  operatorContext:
-    name: tyk-operator-ctx-dev
-    namespace: tyk-operator-system
-
 ```
 
 3. To install manually using Helm
 ```
-kubectl create ns httpbin-app
-helm install httpbin . -n httpbin-app -f values-dev.yaml
+kubectl create ns apps
+helm install httpbin . -n apps -f values-dev.yaml
 ```
 
 4. To roll out a new version of your application on Dev / Staging / Production environment

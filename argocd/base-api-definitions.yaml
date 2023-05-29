@@ -1,0 +1,55 @@
+apiVersion: v1
+items:
+- apiVersion: tyk.tyk.io/v1alpha1
+  kind: ApiDefinition
+  metadata:
+    name: argocd
+    namespace: argocd
+  spec:
+    active: true
+    domain: argocd.dev.tyk-demo.com
+    name: ArgoCD Server
+    protocol: https
+    proxy:
+      listen_path: /
+      strip_listen_path: true
+      target_url: https://argocd-server.argocd.svc
+      transport:
+        ssl_insecure_skip_verify: true
+    use_keyless: true
+- apiVersion: tyk.tyk.io/v1alpha1
+  kind: ApiDefinition
+  metadata:
+    name: https-redirect
+    namespace: argocd
+  spec:
+    active: true
+    listen_port: 8081
+    name: HTTPS Redirect
+    protocol: http
+    do_not_track: false
+    proxy:
+      listen_path: /
+      target_url: https://dev.tyk-demo.com
+      transport:
+        ssl_insecure_skip_verify: true
+    use_keyless: true
+- apiVersion: tyk.tyk.io/v1alpha1
+  kind: ApiDefinition
+  metadata:
+    name: tyk-dashboard
+    namespace: argocd
+  spec:
+    active: true
+    domain: dashboard.dev.tyk-demo.com
+    name: Tyk Dashboard
+    protocol: https
+    proxy:
+      listen_path: /
+      strip_listen_path: true
+      target_url: http://dashboard-svc-tyk-pro:3000
+    use_keyless: true
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

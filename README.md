@@ -1,13 +1,13 @@
 # tyk-cicd-demo
 
-This is a playground for demostrating how to control deployment of APIs in CI/CD use Tyk Operator or Tyk Sync.
+This is a playground for demostrating how to control deployment of APIs using GitOps in CI/CD via Tyk Operator
 
 ## Example 1 - Deploying your application and API configurations using Helm and ArgoCD
 In this example, you'll use Helm to package your applications with API configurations. The Helm Chart and manifests are committed to Git. ArgoCD will automatically re-deploy (sync) your Helm Chart.
 
 1. Environment setup
 
-First, setup your Tyk environments for testing. In this demo, we assume 3 environments (dev, staging, prod).
+First, setup your Tyk environments for testing. In this demo, we assume 2 environments (dev, prod).
 
 Then, setup some local Kubernetes clusters where you can deploy ArgoCD, Tyk Operator, and the applications.
 
@@ -24,10 +24,6 @@ To switch cluster:
 kubectx staging
 kubectx production
 ```
-
-2. Install Tyk Operator
-
-Follow [`operator-configs`](./operator-configs/) to install Tyk Operator and configure OperatorContext to connect to different Tyk environments.
 
 3. Install ArgoCD
 

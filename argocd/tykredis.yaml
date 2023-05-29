@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tyk-redis
+  namespace: argocd
+spec:
+  destination:
+    namespace: tyk
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: redis
+    helm:
+      parameters:
+      - name: auth.password
+        value: topsecretpassword
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 16.11.2

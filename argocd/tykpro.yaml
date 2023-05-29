@@ -1,0 +1,62 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tyk-pro
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://helm.tyk.io/public/helm/charts/'
+    targetRevision: 0.13.2
+    helm:
+      parameters:
+        - name: 'dash.image.tag'
+          value: 'v5.0.2-rc7'
+        - name: mongo.useSSL
+          value: 'true'
+        - name: redis.addrs
+          value: 'tyk-redis-master.tyk.svc.cluster.local:6379'
+        - name: redis.pass
+          value: topsecretpassword
+        - name: gateway.tls
+          value: 'true'
+        - name: gateway.service.type
+          value: LoadBalancer
+        - name: gateway.service.port
+          value: '443'
+        - name: bootstrap
+          value: 'false'
+        - name: dash.bootstrap
+          value: 'false'
+        - name: portal.bootstrap
+          value: 'false'
+        - name: enterprisePortal.bootstrap
+          value: 'false'
+        - name: 'pump.extraEnvs[0].name'
+          value:  'TYK_PMP_DONTPURGEUPTIMEDATA'
+        - name: 'pump.extraEnvs[0].value'
+          value:  'true'
+        - name: 'gateway.hostName'
+          value: 'dev.tyk-demo.com'
+        - name: 'gateway.extraEnvs[0].name'
+          value:  'TYK_GW_DISABLEPORTWHITELIST'
+        - name: 'gateway.extraEnvs[0].value'
+          value:  'true'
+        - name: 'dashboard.extraEnvs[0].name'
+          value:  'TYK_DB_MONGODRIVER'
+        - name: 'dashboard.extraEnvs[0].value'
+          value:  'mongo-go'
+        - name: 'gateway.replicaCount'
+          value:  '2'
+    chart: tyk-pro
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: tyk
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+# ---
+# how do we automate this? do we need a post-script?
+# Have to run this to add the IP: 
+# $ kubectl patch svc gateway-svc-tyk-pro -n tyk -p '{"spec": {"loadBalancerIP": "35.237.85.29"}}'

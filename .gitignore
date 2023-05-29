@@ -1,3 +1,4 @@
 .DS_Store
 gateway-configs\.env.dev
 gateway-configs\.env.staging
+.notes
