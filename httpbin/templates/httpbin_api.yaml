@@ -5,7 +5,7 @@ metadata:
   namespace: apps
 spec:
   name: {{ include "httpbin.fullname" . }}
-  use_keyless: false
+  use_keyless: true
   protocol: https
   active: true
   domain: {{ .Values.api.domain }}
@@ -13,50 +13,50 @@ spec:
     target_url: http://{{ include "httpbin.fullname" . }}.{{ .Release.Namespace }}.svc:{{ .Values.service.port }}
     listen_path: {{ .Values.api.listenPath }}
     strip_listen_path: true
-  response_processors:
-    - name: response_body_transform
-    - name: header_injector
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          transform_response:
-            - method: GET
-              path: /xml
-              template_data:
-                enable_session: false
-                input_type: xml
-                template_mode: blob
-                # base64 encoded template
-                template_source: e3sgLiB8IGpzb25NYXJzaGFsIH19
-          transform_response_headers:
-            - method: GET
-              path: /xml
-              add_headers:
-                Content-Type: "application/json"
-              act_on: false
-              delete_headers: [ ]
+#   response_processors:
+#     - name: response_body_transform
+#     - name: header_injector
+#   version_data:
+#     default_version: Default
+#     not_versioned: true
+#     versions:
+#       Default:
+#         name: Default
+#         use_extended_paths: true
+#         extended_paths:
+#           transform_response:
+#             - method: GET
+#               path: /xml
+#               template_data:
+#                 enable_session: false
+#                 input_type: xml
+#                 template_mode: blob
+#                 # base64 encoded template
+#                 template_source: e3sgLiB8IGpzb25NYXJzaGFsIH19
+#           transform_response_headers:
+#             - method: GET
+#               path: /xml
+#               add_headers:
+#                 Content-Type: "application/json"
+#               act_on: false
+#               delete_headers: [ ]
 
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: SecurityPolicy
-metadata:
-  name: tyk-cicd-demo-{{ include "httpbin.fullname" . }}
-  namespace: apps
-spec:
-  name: {{ include "httpbin.fullname" . }} Policy
-  state: active
-  active: true
-  access_rights_array:
-    - name: tyk-cicd-demo-httpbin
-      namespace: apps
-      versions:
-        - Default
-  quota_max: 10
-  quota_renewal_rate: 60
-  rate: 2
-  per: 5
+# ---
+# apiVersion: tyk.tyk.io/v1alpha1
+# kind: SecurityPolicy
+# metadata:
+#   name: tyk-cicd-demo-{{ include "httpbin.fullname" . }}
+#   namespace: apps
+# spec:
+#   name: {{ include "httpbin.fullname" . }} Policy
+#   state: active
+#   active: true
+#   access_rights_array:
+#     - name: tyk-cicd-demo-httpbin
+#       namespace: apps
+#       versions:
+#         - Default
+#   quota_max: 10
+#   quota_renewal_rate: 60
+#   rate: 2
+#   per: 5

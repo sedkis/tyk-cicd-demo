@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpbin
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sedkis/tyk-cicd-demo/'
+    path: httpbin
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-dev.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: apps
