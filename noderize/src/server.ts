@@ -1,6 +1,7 @@
 require("dotenv").config()
 var morgan = require('morgan')
 
+// import { randomJoke } from './jokes';
 import { isAuthenticated } from './middleware/auth';
 
 // Setup API Server
@@ -31,7 +32,7 @@ const users = require('./users')
 // User Routes
 app.get("/api/user/:id", isAuthenticated, users.getUser)
 // Admin User Route
-// app.get("/api/user/all", isAuthenticated, users.getAllUsers)
+// app.get("/api/joke/random", isAuthenticated, randomJoke )
 
 // Health Check
 app.get("/api/health", (_req, res) => {
