@@ -1,7 +1,6 @@
 require("dotenv").config()
 var morgan = require('morgan')
 
-// import { randomJoke } from './jokes';
 import { isAuthenticated } from './middleware/auth';
 
 // Setup API Server
